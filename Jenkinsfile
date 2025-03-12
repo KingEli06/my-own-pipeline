@@ -21,8 +21,8 @@ pipeline {
         }
         stage('DockerImageTag'){
             steps{
-                sh 'docker tag jenkins-ci:latest 
-                529088290671.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci:latest'
+                sh 'docker tag jenkins-ci:latest \
+                 529088290671.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci:latest'
             }
         }
         stage('PushImage'){
