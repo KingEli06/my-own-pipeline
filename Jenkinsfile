@@ -17,14 +17,14 @@ pipeline {
         stage('DockerImageBuild'){
             steps{
                 sh 'docker build -t jenkins-ci .'
-                sh 'docker build -t imageVersion .'
+                sh 'docker build -t imageversion .'
             }
         }
         stage('DockerImageTag'){
             steps{
                 sh 'docker tag jenkins-ci:latest \
                  529088290671.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci:latest'
-                sh 'docker tag imageVersion \
+                sh 'docker tag imageversion \
                  529088290671.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci:v1.$BUILD_NUMBER'
             }
         }
