@@ -9,7 +9,7 @@ pipeline {
         }
         stage('DockerLogin'){
             steps{
-                sh 'aws ecr get-login-password --region us-east-1 | 
+                sh 'aws ecr get-login-password --region us-east-1 | \
                 docker login --username AWS --password-stdin \
                 529088290671.dkr.ecr.us-east-1.amazonaws.com'
             }
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('PushImage'){
             steps{
-                sh 'docker ps'
+                sh 'docker push 529088290671.dkr.ecr.us-east-1.amazonaws.com/jenkins-ci:latest'
             }
         }
     }
