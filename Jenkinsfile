@@ -18,7 +18,7 @@ pipeline {
         }
         stage('DockerLogin'){
             steps{
-                sh "aws ecr get-login-password --region $AWS_REGION | 
+                sh "aws ecr get-login-password --region $AWS_REGION | \
                 docker login --username AWS --password-stdin \
                 $ECR_REPO"
             }
@@ -34,7 +34,7 @@ pipeline {
                 sh "docker tag jenkins-ci:latest \
                  $IMAGE_ECR_REPO:latest"
                 sh "docker tag imageversion \
-                 $ECR_REPO:v1.$BUILD_NUMBER"
+                 $IMAGE_ECR_REPO:v1.$BUILD_NUMBER"
             }
         }
         stage('PushImage'){
